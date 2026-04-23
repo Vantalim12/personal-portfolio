@@ -1,0 +1,26 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import careerData from "@/data/career.json";
+import educationData from "@/data/education.json";
+import { careerSchema, educationSchema } from "@/lib/schemas";
+import Timeline from "./Timeline";
+
+export default function Experience() {
+  const career = careerSchema.parse(careerData).career;
+  const education = educationSchema.parse(educationData).education;
+
+  return (
+    <Tabs defaultValue="education">
+      <TabsList className="mb-2 grid w-full grid-cols-2">
+        <TabsTrigger value="education">Education</TabsTrigger>
+        <TabsTrigger value="work">Work</TabsTrigger>
+      </TabsList>
+      <TabsContent value="education">
+        <Timeline experience={education} />
+      </TabsContent>
+      <TabsContent value="work">
+        <Timeline experience={career} />
+      </TabsContent>
+    </Tabs>
+  );
+}
+

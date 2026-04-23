@@ -1,0 +1,19 @@
+{
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "href": "https://www.linkedin.com/in/jasper-gumora-024501290/",
+      "icon": "linkedin"
+    },
+    {
+      "name": "GitHub",
+      "href": "https://github.com/Vantalim12",
+      "icon": "github"
+    },
+    {
+      "name": "Email",
+      "href": "mailto:jasper.gumora@g.msuiit.edu.ph",
+      "icon": "mail"
+    }
+  ]
+}

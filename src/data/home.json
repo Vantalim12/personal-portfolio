@@ -1,0 +1,16 @@
+{
+  "introduction": {
+    "greeting": "hi jas here. 👋",
+    "description": "Full-stack developer who’s too invested in his keyboard. I self host n8n automations, run my own tailscale network, and can fix your wifi (probably).",
+    "chatPrompt": "For Q&A, start a chat with Jas Support",
+    "escalation": {
+      "text": "For any escalations, please find my",
+      "linkText": "Jas Lead",
+      "suffix": "instead."
+    }
+  },
+  "escalationLink": {
+    "href": "https://www.instagram.com/woofwoof.jopay",
+    "title": "woof"
+  }
+}

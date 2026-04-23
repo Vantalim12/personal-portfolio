@@ -1,0 +1,19 @@
+{
+  "career": [
+    {
+      "name": "Open to Internships",
+      "href": "",
+      "logo": "/img/placeholder-company.png",
+      "positions": [
+        {
+          "title": "Internship / Part-time Role",
+          "start": "2025",
+          "description": [
+            "Currently an undergrad at MSU-IIT actively looking for internship opportunities in full-stack development, Web3, or DevOps/automation.",
+            "Reach out via the contact form or email if you'd like to work together!"
+          ]
+        }
+      ]
+    }
+  ]
+}

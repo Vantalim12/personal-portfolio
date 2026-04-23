@@ -1,0 +1,63 @@
+{
+  "projects": [
+    {
+      "name": "iPlan (MSU-IIT System)",
+      "description": "Contributed to the development of the existing iPlan system, focusing on high-fidelity dashboarding for university-level planning and resource management.",
+      "image": "/img/iplandb.png",
+      "tags": [
+        "Data Visualization",
+        "Dashboarding"
+      ],
+      "links": []
+    },
+    {
+      "name": "CCS Attendance Monitoring System",
+      "description": "A QR-based attendance system developed to automate event monitoring for the School of Computer Studies, reducing manual tracking effort.",
+      "image": "/img/ccsams.png",
+      "tags": [
+        "Laravel",
+        "JavaScript",
+        "QR Integration"
+      ],
+      "links": [
+        {
+          "name": "Source",
+          "href": "https://github.com/Vantalim12/ccsattendancesystem",
+          "icon": "github"
+        }
+      ]
+    },
+    {
+      "name": "eSihagBa",
+      "description": "An offline-first budget transparency portal for barangays on the Internet Computer Protocol, featuring a retro-modern, minimalist terminal aesthetic.",
+      "tags": [
+        "Motoko",
+        "ICP",
+        "Web3",
+        "Offline-First"
+      ],
+      "links": []
+    },
+    {
+      "name": "MaxYield (LST Index)",
+      "description": "A DeFi protocol on Solana for yield-bearing staking tokens (LSTs), complete with a dark-mode dashboard for real-time visualization of protocol performance.",
+      "tags": [
+        "Solana",
+        "TypeScript",
+        "DeFi",
+        "Web3"
+      ],
+      "links": []
+    },
+    {
+      "name": "Largo",
+      "description": "An app-agnostic earnings and expense tracker designed for transport drivers in the Philippines, optimized for high-intensity, mobile-first usage.",
+      "tags": [
+        "React Native",
+        "MongoDB",
+        "Mobile Development"
+      ],
+      "links": []
+    }
+  ]
+}
