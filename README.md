@@ -11,7 +11,7 @@ A clean, minimal portfolio website built with Next.js 14, Tailwind CSS, and Shad
 - **Framework**: Next.js 14 (App Router)
 - **Styling**: Tailwind CSS + Shadcn UI
 - **Email**: Resend
-- **AI Chat**: Groq API (via `src/app/api/chat/`)
+- **AI Chat**: OpenRouter API (via `src/app/api/chat/`)
 - **Hosting**: Vercel
 
 ## Getting Started
@@ -21,7 +21,7 @@ git clone https://github.com/Vantalim12/portfolio-website
 cd portfolio-website
 npm install
 cp .env.example .env.local
-# Fill in RESEND_API_KEY and GROQ_API_KEY
+# Fill in RESEND_API_KEY and OPENROUTER_API_KEY
 npm run dev
 ```
 
@@ -30,7 +30,7 @@ npm run dev
 | Variable | Purpose |
 |----------|---------|
 | `RESEND_API_KEY` | Contact form email delivery |
-| `GROQ_API_KEY` | AI chat assistant backend |
+| `OPENROUTER_API_KEY` | AI chat assistant backend |
 | `REVALIDATE_SECRET` | On-demand blog cache revalidation (optional) |
 
 See `.env.example` for the full list.

@@ -1,4 +1,4 @@
-import { PostSummary } from "@/lib/posts";
+import type { PostSummary } from "@/lib/posts";
 import { formatDate, formatViews } from "@/lib/utils";
 import { Calendar, Clock, Edit3, Eye } from "lucide-react";
 import Link from "next/link";

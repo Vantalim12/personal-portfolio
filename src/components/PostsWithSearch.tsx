@@ -1,6 +1,6 @@
 "use client";
 
-import { PostSummary } from "@/lib/posts";
+import type { PostSummary } from "@/lib/posts";
 import { ArrowUpDown, Delete } from "lucide-react";
 import { useState } from "react";
 import Posts from "./Posts";
