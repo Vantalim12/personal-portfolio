@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    useTypeScriptCli: false,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
+  },
+  async redirects() {
+    return [
       {
-        protocol: "https",
-        hostname: "tacos.tedawf.com",
-        port: "",
-        pathname: "/images/**",
+        source: "/resume.pdf",
+        destination: "/Gumora-Resume.pdf",
+        permanent: true,
       },
-    ],
+    ];
   },
 };
 

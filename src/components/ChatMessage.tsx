@@ -1,17 +1,21 @@
 import { cn } from "@/lib/utils";
-import { Message } from "ai";
+import type { UIMessage } from "ai";
 import { Bot } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
 interface ChatMessageProps {
-  message: Message;
+  message: UIMessage;
 }
 
 export default function ChatMessage({
-  message: { role, content },
+  message: { role, parts },
 }: ChatMessageProps) {
   const isBot = role === "assistant";
+  const content = parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text)
+    .join("");
 
   return (
     <div

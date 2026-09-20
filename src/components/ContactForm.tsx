@@ -40,20 +40,11 @@ export default function ContactForm() {
       name: "",
       email: "",
       message: "",
+      website: "",
     },
   });
 
   const handleFormSubmit: SubmitHandler<Inputs> = async (data) => {
-    const formElement = document.querySelector("form");
-    const honeypot = formElement?.querySelector(
-      'input[name="website"]',
-    ) as HTMLInputElement;
-
-    if (honeypot?.value) {
-      toast.error("Something went wrong. Please try again.");
-      return;
-    }
-
     setFormData(data);
     setShowConfirmDialog(true);
   };
@@ -80,10 +71,10 @@ export default function ContactForm() {
         {/* Honeypot */}
         <input
           type="text"
-          name="website"
           tabIndex={-1}
           autoComplete="off"
           className="pointer-events-none absolute -left-[9999px] opacity-0"
+          {...register("website")}
         />
 
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">

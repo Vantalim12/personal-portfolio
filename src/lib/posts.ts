@@ -32,7 +32,7 @@ const fetchWithApiKey = async (
 ) => {
   const { tags, revalidateSeconds } = options;
   if (!TACOS_API_URL) {
-    return [];
+    throw new Error("TACOS_API_URL is not configured");
   }
   const res = await fetch(url, {
     ...(process.env.NODE_ENV === "production"
@@ -56,12 +56,16 @@ const fetchWithApiKey = async (
 
 export async function getPosts(limit?: number): Promise<PostSummary[]> {
   try {
-    const posts: PostSummary[] = await fetchWithApiKey(
+    const posts: unknown = await fetchWithApiKey(
       `${TACOS_API_URL}/posts`,
       { tags: ["posts"] },
     );
     // Posts already sorted by publishedAt desc from the API
-    return limit ? posts.slice(0, limit) : posts;
+    if (!Array.isArray(posts)) {
+      return [];
+    }
+    const summaries = posts as PostSummary[];
+    return limit ? summaries.slice(0, limit) : summaries;
   } catch (err) {
     console.error("Error fetching posts:", err);
     return [];
@@ -70,11 +74,14 @@ export async function getPosts(limit?: number): Promise<PostSummary[]> {
 
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   try {
-    const post: PostDetail = await fetchWithApiKey(
-      `${TACOS_API_URL}/posts/${slug}`,
+    const post: unknown = await fetchWithApiKey(
+      `${TACOS_API_URL}/posts/${encodeURIComponent(slug)}`,
       { tags: ["posts", `post:${slug}`] },
     );
-    return post;
+    if (!post || Array.isArray(post) || typeof post !== "object") {
+      return null;
+    }
+    return post as PostDetail;
   } catch (err) {
     console.error(`Error fetching post ${slug}:`, err);
     return null;

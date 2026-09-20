@@ -1,28 +1,21 @@
-import { ChatRequestOptions, Message } from "ai";
+import type { UIMessage } from "ai";
 import { SendHorizontal, Trash } from "lucide-react";
-import { HTMLAttributes } from "react";
+import type { FormEvent, HTMLAttributes, KeyboardEvent } from "react";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 
 interface ChatInputProps extends HTMLAttributes<HTMLFormElement> {
   input: string;
-  handleSubmit: (
-    event?: {
-      preventDefault?: () => void;
-    },
-    chatRequestOptions?: ChatRequestOptions,
-  ) => void;
+  handleSubmit: (event?: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLInputElement>) => void;
   handleInputChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  setMessages: (
-    messages: Message[] | ((messages: Message[]) => Message[]),
-  ) => void;
+  setMessages: (messages: UIMessage[] | ((messages: UIMessage[]) => UIMessage[])) => void;
   onClearChat?: () => void;
   isLoading: boolean;
-  messages: Message[];
+  messages: UIMessage[];
 }
 
 export default function ChatInput({
@@ -69,7 +62,7 @@ export default function ChatInput({
         title="Send message"
         variant="default"
         className="h-9 px-3 py-2 touch-target sm:h-10 sm:px-4 sm:py-2.5"
-        disabled={input.length === 0}
+        disabled={input.trim().length === 0 || isLoading}
         type="submit"
       >
         <SendHorizontal className="size-4 sm:size-5" />

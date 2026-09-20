@@ -3,19 +3,7 @@ import Header from "@/components/Header";
 import Providers from "@/components/Providers";
 import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
-import { Calistoga, Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
-});
-const calistoga = Calistoga({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400"],
-});
 
 export const metadata: Metadata = {
   title: "Jasper's Portfolio",
@@ -60,8 +48,6 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          inter.variable,
-          calistoga.variable,
         )}
       >
         <Providers>

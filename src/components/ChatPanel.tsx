@@ -1,7 +1,8 @@
 "use client";
 
-import { useChat } from "ai/react";
-import { useCallback, useEffect, useRef, type ChangeEvent } from "react";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { useMemo, useState } from "react";
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
 
@@ -10,106 +11,37 @@ type ChatPanelProps = {
 };
 
 export default function ChatPanel({ isExpanded }: ChatPanelProps) {
-  const chatIdRef = useRef<string | null>(null);
-
-  const chatFetch = useCallback<typeof fetch>(
-    async (input: RequestInfo | URL, init?: RequestInit) => {
-      const baseInit: RequestInit = init || {};
-      const headers = new Headers(baseInit.headers);
-      const originalBody = baseInit.body;
-      let bodyToSend = originalBody;
-
-      const addSessionToPayload = (chatId: string | null) => {
-        if (!chatId) return;
-        headers.set("X-Chat-Id", chatId);
-
-        if (typeof bodyToSend === "string") {
-          try {
-            const parsedBody = JSON.parse(bodyToSend);
-            parsedBody.chat_id = chatId;
-            bodyToSend = JSON.stringify(parsedBody);
-          } catch (error) {
-            console.error("[chat] failed to attach chat_id", error);
-          }
-        }
-      };
-
-      addSessionToPayload(chatIdRef.current);
-
-      const performFetch = async (
-        headersOverride: HeadersInit,
-        bodyOverride: BodyInit | null | undefined,
-      ) =>
-        fetch(input, {
-          ...baseInit,
-          headers: headersOverride,
-          body: bodyOverride,
-        });
-
-      const captureSessionId = (res: Response) => {
-        const newChatId = res.headers.get("X-Chat-Id");
-        if (newChatId) {
-          chatIdRef.current = newChatId;
-        }
-      };
-
-      let response = await performFetch(headers, bodyToSend);
-
-      if (response.status === 400) {
-        const errorText = await response
-          .clone()
-          .text()
-          .catch(() => "");
-
-        if (errorText.includes("Invalid X-Chat-Id")) {
-          chatIdRef.current = null;
-
-          const retryHeaders = new Headers(baseInit.headers);
-          retryHeaders.delete("X-Chat-Id");
-          retryHeaders.delete("x-chat-id");
-          let retryBody = originalBody;
-
-          if (typeof originalBody === "string") {
-            try {
-              const parsedRetryBody = JSON.parse(originalBody);
-              delete parsedRetryBody.chat_id;
-              retryBody = JSON.stringify(parsedRetryBody);
-            } catch (error) {
-              console.error("[chat] failed to strip chat_id", error);
-            }
-          }
-
-          response = await performFetch(retryHeaders, retryBody);
-          captureSessionId(response);
-          return response;
-        }
-      }
-
-      captureSessionId(response);
-      return response;
-    },
+  const [input, setInput] = useState("");
+  const transport = useMemo(
+    () => new DefaultChatTransport({ api: "/api/chat" }),
     [],
   );
 
   const {
     messages,
-    input,
-    handleInputChange,
-    handleSubmit,
+    sendMessage,
     setMessages,
-    isLoading,
+    status,
     error,
-  } = useChat({ fetch: chatFetch });
+  } = useChat({ transport });
 
-  useEffect(() => {
-    if (messages.length === 0) {
-      chatIdRef.current = null;
-    }
-  }, [messages]);
+  const isLoading = status === "submitted" || status === "streaming";
 
-  const handleClearChat = () => {
-    chatIdRef.current = null;
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => setInput(event.target.value);
+
+  const handleSubmit = (
+    event?: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    event?.preventDefault();
+    const text = input.trim();
+    if (!text || isLoading) return;
+    void sendMessage({ text });
+    setInput("");
   };
+
+  const handleClearChat = () => setInput("");
 
   if (!isExpanded) {
     return null;
@@ -121,11 +53,7 @@ export default function ChatPanel({ isExpanded }: ChatPanelProps) {
         messages={messages}
         error={error}
         isLoading={isLoading}
-        onPromptClick={(prompt) =>
-          handleInputChange({
-            target: { value: prompt },
-          } as ChangeEvent<HTMLInputElement>)
-        }
+        onPromptClick={setInput}
       />
       <ChatInput
         input={input}

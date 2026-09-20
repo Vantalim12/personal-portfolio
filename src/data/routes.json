@@ -3,7 +3,7 @@
     {
       "path": "/",
       "name": "home",
-      "description": "Portfolio overview, recent projects, and blog highlights",
+      "description": "Portfolio overview and recent projects",
       "showInNav": true
     },
     {
@@ -11,12 +11,6 @@
       "name": "projects",
       "description": "Portfolio projects showcase",
       "showInNav": true
-    },
-    {
-      "path": "/blog",
-      "name": "blog",
-      "description": "Blog posts and project updates",
-      "showInNav": false
     },
     {
       "path": "/contact",
@@ -31,9 +25,9 @@
       "showInNav": false
     },
     {
-      "path": "/resume.pdf",
+      "path": "/Gumora-Resume.pdf",
       "name": "resume",
-      "description": "Jasper's resume CV in pdf format (placeholder — replace resume.pdf)",
+      "description": "Jasper's current resume CV in PDF format",
       "showInNav": true
     }
   ],

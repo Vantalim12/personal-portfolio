@@ -20,7 +20,16 @@ export default function Header() {
           <ul className="flex gap-4 sm:gap-8">
             {navLinks.map((nav, id) => (
               <li key={id} className="link">
-                <Link href={nav.href} title={nav.title}>
+                <Link
+                  href={nav.href}
+                  title={nav.title}
+                  target={nav.href.endsWith(".pdf") ? "_blank" : undefined}
+                  rel={
+                    nav.href.endsWith(".pdf")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                >
                   {nav.name}
                 </Link>
               </li>

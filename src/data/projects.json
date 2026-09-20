@@ -1,6 +1,40 @@
 {
   "projects": [
     {
+      "name": "Legacy Rides",
+      "description": "Reliable weekly car rentals for drivers building their income across East New York and Brooklyn. Technologies: Go High Level, TypeScript, PLpgSQL, CSS, Shell, and JavaScript.",
+      "href": "https://legacyrides.rentals/",
+      "image": "/img/legacy-rides.png",
+      "tags": [
+        "Go High Level",
+        "TypeScript",
+        "PLpgSQL",
+        "CSS",
+        "Shell",
+        "JavaScript"
+      ],
+      "links": []
+    },
+    {
+      "name": "eSihagBa",
+      "description": "An offline-first budget transparency portal for barangays on the Internet Computer Protocol, featuring a retro-modern, minimalist terminal aesthetic.",
+      "href": "https://rxfvq-ryaaa-aaaab-afiea-cai.icp0.io/#/",
+      "image": "/img/esihagba.png",
+      "tags": [
+        "Motoko",
+        "ICP",
+        "Web3",
+        "Offline-First"
+      ],
+      "links": [
+        {
+          "name": "Source",
+          "href": "https://github.com/Vantalim12/eSihagBaICBlockchain",
+          "icon": "github"
+        }
+      ]
+    },
+    {
       "name": "iPlan (MSU-IIT System)",
       "description": "Contributed to the development of the existing iPlan system, focusing on high-fidelity dashboarding for university-level planning and resource management.",
       "image": "/img/iplandb.png",
@@ -28,36 +62,22 @@
       ]
     },
     {
-      "name": "eSihagBa",
-      "description": "An offline-first budget transparency portal for barangays on the Internet Computer Protocol, featuring a retro-modern, minimalist terminal aesthetic.",
+      "name": "BetterIliganCity.org",
+      "description": "A modernized, volunteer-driven portal to access government services, public data, and resources for the people of Iligan.",
+      "href": "https://betteriligancity.org/",
+      "image": "/img/betteriligan-city.png",
       "tags": [
-        "Motoko",
-        "ICP",
-        "Web3",
-        "Offline-First"
+        "Civic Tech",
+        "Government Services",
+        "Public Data"
       ],
-      "links": []
-    },
-    {
-      "name": "MaxYield (LST Index)",
-      "description": "A DeFi protocol on Solana for yield-bearing staking tokens (LSTs), complete with a dark-mode dashboard for real-time visualization of protocol performance.",
-      "tags": [
-        "Solana",
-        "TypeScript",
-        "DeFi",
-        "Web3"
-      ],
-      "links": []
-    },
-    {
-      "name": "Largo",
-      "description": "An app-agnostic earnings and expense tracker designed for transport drivers in the Philippines, optimized for high-intensity, mobile-first usage.",
-      "tags": [
-        "React Native",
-        "MongoDB",
-        "Mobile Development"
-      ],
-      "links": []
+      "links": [
+        {
+          "name": "Source",
+          "href": "https://github.com/KishonShrill/BetterIligan",
+          "icon": "github"
+        }
+      ]
     }
   ]
-}
+}

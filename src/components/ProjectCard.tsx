@@ -23,7 +23,11 @@ export function ProjectCard({ project }: Props) {
     <Card className="flex flex-col">
       <CardHeader>
         {image && (
-          <Link href={href || image}>
+          <Link
+            href={href || image}
+            target={href ? "_blank" : undefined}
+            rel={href ? "noopener noreferrer" : undefined}
+          >
             <ImageWithSkeleton
               src={image}
               alt={name}
@@ -60,7 +64,12 @@ export function ProjectCard({ project }: Props) {
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links.toSorted().map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
+              <Link
+                href={link.href}
+                key={idx}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
                   <Icon name={link.icon} className="size-3" />
                   {link.name}

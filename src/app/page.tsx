@@ -1,12 +1,9 @@
 import Experience from "@/components/Experience";
 import LinkWithIcon from "@/components/LinkWithIcon";
-import Posts from "@/components/Posts";
-import PostsSkeleton from "@/components/PostsSkeleton";
 import Projects from "@/components/Projects";
 import Socials from "@/components/Socials";
 import SwipeCards from "@/components/SwipeCards";
 import { Button } from "@/components/ui/Button";
-import { getPosts } from "@/lib/posts";
 import {
   ArrowDown,
   ArrowDownRight,
@@ -14,18 +11,10 @@ import {
   FileDown,
 } from "lucide-react";
 import Link from "next/link";
-import { Suspense } from "react";
 
 import homeContent from "@/data/home.json";
 
 const LIMIT = 2; // max show 2
-
-async function RecentPosts() {
-  const posts = (await getPosts())
-    .filter((post) => !post.draft)
-    .slice(0, LIMIT);
-  return <Posts posts={posts} />;
-}
 
 export default function Home() {
   return (
@@ -55,6 +44,7 @@ export default function Home() {
             <Link
               href={homeContent.escalationLink.href}
               target="_blank"
+              rel="noopener noreferrer"
               className="link font-semibold underline"
               title={homeContent.escalationLink.title}
             >
@@ -65,7 +55,11 @@ export default function Home() {
           </p>
 
           <section className="mt-6 flex flex-wrap items-center gap-4">
-            <Link href="/resume.pdf" target="_blank">
+            <Link
+              href="/Gumora-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="outline">
                 <span className="font-semibold">Resume</span>
                 <FileDown className="ml-2 size-5" />
@@ -91,20 +85,6 @@ export default function Home() {
         <Projects limit={LIMIT} />
       </section>
 
-      <section className="flex flex-col gap-8">
-        <div className="flex justify-between">
-          <h2 className="title text-3xl">recent posts</h2>
-          <LinkWithIcon
-            href="/blog"
-            position="right"
-            icon={<ArrowRightIcon className="size-5" />}
-            text="view more"
-          />
-        </div>
-        <Suspense fallback={<PostsSkeleton rows={LIMIT} />}>
-          <RecentPosts />
-        </Suspense>
-      </section>
     </article>
   );
 }

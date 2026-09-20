@@ -16,7 +16,7 @@ export default function TimelineItem({ experience }: Props) {
       <Link
         href={href}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="absolute -left-16 top-4 flex items-center justify-center rounded-full bg-white"
       >
         <Avatar className="size-12 border">
@@ -31,7 +31,12 @@ export default function TimelineItem({ experience }: Props) {
         </Avatar>
       </Link>
       <div className="flex flex-1 flex-col justify-start gap-2">
-        <Link href={href} target="_blank" rel="noreferrer" className="w-fit">
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-fit"
+        >
           <h2 className="text-base font-semibold leading-none">{name}</h2>
         </Link>
         <div className="flex flex-col gap-2">

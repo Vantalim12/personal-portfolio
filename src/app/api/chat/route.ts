@@ -1,11 +1,78 @@
-import { OpenAIStream, StreamingTextResponse, type Message } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+import {
+  convertToModelMessages,
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  generateId,
+  streamText,
+  type UIMessage,
+} from "ai";
 import {
   REFUSAL_MESSAGE,
   getLastUserMessage,
   isOffTopicQuestion,
 } from "@/lib/chatGuardrails";
+import { z } from "zod";
 
-export const runtime = "edge";
+const MAX_CHAT_MESSAGES = 20;
+const MAX_MESSAGE_PARTS = 8;
+const MAX_MESSAGE_LENGTH = 4000;
+const CHAT_RATE_LIMIT = 20;
+const CHAT_RATE_WINDOW_MS = 60 * 1000;
+const chatAttempts = new Map<string, { count: number; resetAt: number }>();
+
+const chatRequestSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        id: z.string().min(1).max(100),
+        role: z.enum(["user", "assistant"]),
+        parts: z
+          .array(
+            z.object({
+              type: z.literal("text"),
+              text: z.string().trim().min(1).max(MAX_MESSAGE_LENGTH),
+            }),
+          )
+          .min(1)
+          .max(MAX_MESSAGE_PARTS),
+      }),
+    )
+    .min(1)
+    .max(MAX_CHAT_MESSAGES),
+});
+
+function getClientKey(request: Request) {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    "unknown"
+  );
+}
+
+function isRateLimited(key: string) {
+  const now = Date.now();
+
+  if (chatAttempts.size > 1000) {
+    chatAttempts.forEach((entry, entryKey) => {
+      if (entry.resetAt <= now) {
+        chatAttempts.delete(entryKey);
+      }
+    });
+  }
+
+  const current = chatAttempts.get(key);
+  if (!current || current.resetAt <= now) {
+    chatAttempts.set(key, {
+      count: 1,
+      resetAt: now + CHAT_RATE_WINDOW_MS,
+    });
+    return false;
+  }
+
+  current.count += 1;
+  return current.count > CHAT_RATE_LIMIT;
+}
 
 const SYSTEM_PROMPT = `You are Jasper's AI assistant on his personal portfolio website.
 Your job is to answer questions about Jasper in a friendly, concise, and honest way.
@@ -64,13 +131,15 @@ If asked what you can help with, list on-topic topics only.
    Offline-first budget transparency portal for barangays (local government units) on the Internet Computer Protocol (ICP). Features a retro-modern terminal aesthetic.
    Tags: Motoko, ICP, Web3, Offline-First
 
-4. **MaxYield (LST Index)**
-   DeFi protocol on Solana for yield-bearing staking tokens (LSTs), with a dark-mode dashboard for real-time protocol performance.
-   Tags: Solana, TypeScript, DeFi, Web3
+4. **Legacy Rides**
+   Reliable weekly car rentals for drivers building their income across East New York and Brooklyn.
+   Website: https://legacyrides.rentals/
+   Technologies: Go High Level, TypeScript, PLpgSQL, CSS, Shell, JavaScript
 
-5. **Largo**
-   App-agnostic earnings and expense tracker designed for transport drivers in the Philippines, optimized for mobile-first, high-intensity usage.
-   Tags: React Native, MongoDB, Mobile Development
+5. **BetterIliganCity.org**
+   A modernized, volunteer-driven portal to access government services, public data, and resources for the people of Iligan.
+   Website: https://betteriligancity.org/
+   Tags: Civic Tech, Government Services, Public Data
 
 ---
 
@@ -100,7 +169,7 @@ Jasper is an undergrad actively looking for internship opportunities. He is open
 
 ---
 
-If asked about the portfolio site itself: it is built with Next.js 14 (App Router), TypeScript, Tailwind CSS, and Framer Motion. It has a contact form powered by Resend, and this chat is powered by OpenRouter.`;
+If asked about the portfolio site itself: it is built with Next.js 16 (App Router), TypeScript, Tailwind CSS, and Framer Motion. It has a contact form powered by Resend, and this chat is powered by OpenRouter.`;
 
 export async function POST(req: Request) {
   const apiKey = process.env.OPENROUTER_API_KEY;
@@ -113,62 +182,63 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { messages }: { messages: Message[] } = await req.json();
+    if (isRateLimited(getClientKey(req))) {
+      return Response.json(
+        { error: "Too many chat requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": "60" } },
+      );
+    }
+
+    const parsedBody = chatRequestSchema.safeParse(await req.json());
+    if (!parsedBody.success) {
+      return Response.json({ error: "Invalid chat request." }, { status: 400 });
+    }
+
+    const messages = parsedBody.data.messages as UIMessage[];
     const lastUserMessage = getLastUserMessage(messages);
 
     if (isOffTopicQuestion(lastUserMessage)) {
-      const stream = new ReadableStream({
-        start(controller) {
-          controller.enqueue(new TextEncoder().encode(REFUSAL_MESSAGE));
-          controller.close();
+      const stream = createUIMessageStream({
+        execute({ writer }) {
+          const messageId = generateId();
+          writer.write({ type: "start", messageId });
+          writer.write({ type: "text-start", id: messageId });
+          writer.write({
+            type: "text-delta",
+            id: messageId,
+            delta: REFUSAL_MESSAGE,
+          });
+          writer.write({ type: "text-end", id: messageId });
+          writer.write({ type: "finish", finishReason: "stop" });
         },
       });
-      return new StreamingTextResponse(stream);
+      return createUIMessageStreamResponse({ stream });
     }
 
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer":
-            process.env.SITE_URL ?? "http://localhost:3000",
-          "X-Title": "jasperswe portfolio",
-        },
-        body: JSON.stringify({
-          model: "google/gemini-2.5-flash-lite",
-          stream: true,
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            ...messages,
-          ],
-          max_tokens: 512,
-          temperature: 0.7,
-          provider: { sort: "throughput" },
-        }),
+    const openrouter = createOpenAI({
+      apiKey,
+      baseURL: "https://openrouter.ai/api/v1",
+      headers: {
+        "HTTP-Referer": process.env.SITE_URL ?? "http://localhost:3000",
+        "X-Title": "jasperswe portfolio",
       },
-    );
+    });
+    const result = streamText({
+      model: openrouter.chat("google/gemini-2.5-flash-lite"),
+      system: SYSTEM_PROMPT,
+      messages: await convertToModelMessages(messages),
+      maxOutputTokens: 512,
+      temperature: 0.7,
+    });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("[OpenRouter API Error]", errorText);
-      return new Response(JSON.stringify({ error: "Chat request failed." }), {
-        status: 502,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
-    const stream = OpenAIStream(response);
-    return new StreamingTextResponse(stream);
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error("[API Chat Route Error]", error);
-    const message =
-      error instanceof Error ? error.message : "An unknown error occurred";
-    return new Response(JSON.stringify({ error: message }), {
+    return Response.json(
+      { error: "Chat request failed. Please try again later." },
+      {
       status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+      },
+    );
   }
 }

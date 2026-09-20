@@ -1,7 +1,7 @@
-import type { Message } from "ai";
+import type { UIMessage } from "ai";
 
 const ABOUT_JASPER =
-  /\b(jas(?:per)?|gumora|jasperswe|portfolio|iplan|esihagba|e-?sihag|maxyield|largo|internship|msu-?iit|icnhs|contact (?:jas|him)|his (?:work|projects|stack|skills))\b/i;
+  /\b(jas(?:per)?|gumora|jasperswe|portfolio|website|resume|cv|project(?:s)?|skill(?:s)?|experience|education|career|internship|contact|email|help|iplan|esihagba|e-?sihag|legacy rides|better(?:iligan)?|msu-?iit|icnhs|his (?:work|projects|stack|skills))\b/i;
 
 const CODE_HELP =
   /\b(for\s*loops?|while\s*loops?|snippet|boilerplate|leetcode|hello world|pseudocode|sample (?:code|snippet)|example (?:code|snippet)|write (?:me )?(?:a |an )?(?:function|class|script|component|hook|loop)|how (?:do|to) (?:i|you) (?:write|code|implement|loop))\b/i;
@@ -12,10 +12,14 @@ const GENERAL_ASSISTANT =
 const REFUSAL_MESSAGE =
   "I only answer questions about Jasper, his work, and this portfolio — not general coding help or unrelated topics. Ask about his projects, stack, or how to get in touch.";
 
-export function getLastUserMessage(messages: Message[]): string {
+export function getLastUserMessage(messages: UIMessage[]): string {
   for (let i = messages.length - 1; i >= 0; i -= 1) {
     if (messages[i]?.role === "user") {
-      return messages[i].content.trim();
+      return messages[i].parts
+        .filter((part) => part.type === "text")
+        .map((part) => part.text)
+        .join(" ")
+        .trim();
     }
   }
   return "";
@@ -34,11 +38,7 @@ export function isOffTopicQuestion(text: string): boolean {
     return true;
   }
 
-  if (aboutJasper) {
-    return false;
-  }
-
-  return false;
+  return !aboutJasper;
 }
 
 export { REFUSAL_MESSAGE };
