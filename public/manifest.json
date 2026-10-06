@@ -1,11 +1,11 @@
 {
-  "name": "Jasper's Portfolio",
-  "short_name": "jasperswe",
+  "name": "Jasper Gumora",
+  "short_name": "Jasper Gumora",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#6366f1",
-  "description": "Full-stack dev, empty-stack meetings. I self-host n8n automations.",
+  "description": "Jasper Gumora is a full-stack developer who builds web applications and self-hosts n8n workflow automations.",
   "icons": [
     {
       "src": "/icon-192.png",

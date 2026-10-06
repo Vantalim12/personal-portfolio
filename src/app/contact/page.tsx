@@ -1,4 +1,11 @@
 import ContactForm from "@/components/ContactForm";
+import { getPageMetadata } from "@/lib/metadata";
+
+export const metadata = getPageMetadata(
+  "Contact | Jasper Gumora",
+  "Contact Jasper Gumora, a full-stack developer, about his work, projects, or opportunities.",
+  "/contact",
+);
 
 export default function ContactPage() {
   return (

@@ -1,14 +1,17 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
+import { siteDescription, siteUrl } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jasper's Portfolio",
-  description:
-    "Full-stack dev, empty-stack meetings. I self-host n8n automations.",
+  metadataBase: new URL(siteUrl),
+  title: "Jasper Gumora | Full-Stack Developer",
+  description: siteDescription,
+  authors: [{ name: "Jasper Gumora", url: siteUrl }],
+  creator: "Jasper Gumora",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -17,20 +20,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
-  openGraph: {
-    title: "Jasper's Portfolio",
-    description:
-      "Full-stack dev, empty-stack meetings. I self-host n8n automations.",
-    type: "website",
-    siteName: "Jasper's Portfolio",
-  },
-  twitter: {
-    card: "summary",
-    title: "Jasper's Portfolio",
-    description:
-      "Full-stack dev, empty-stack meetings. I self-host n8n automations.",
-    creator: "@Peirogi25",
-  },
 };
 
 export const viewport: Viewport = {
@@ -45,11 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-        )}
-      >
+      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
         <Providers>
           <Header />
           <div className="mx-auto flex max-w-3xl flex-col px-8">

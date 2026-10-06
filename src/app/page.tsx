@@ -4,6 +4,7 @@ import Projects from "@/components/Projects";
 import Socials from "@/components/Socials";
 import SwipeCards from "@/components/SwipeCards";
 import { Button } from "@/components/ui/Button";
+import { getPageMetadata, siteDescription, siteUrl } from "@/lib/metadata";
 import {
   ArrowDown,
   ArrowDownRight,
@@ -14,11 +15,41 @@ import Link from "next/link";
 
 import homeContent from "@/data/home.json";
 
+export const metadata = getPageMetadata(
+  "Jasper Gumora | Full-Stack Developer",
+  siteDescription,
+  "/",
+);
+
+const profileSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: `${siteUrl}/`,
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${siteUrl}/#jasper-gumora`,
+    name: "Jasper Gumora",
+    jobTitle: "Full-Stack Developer",
+    url: `${siteUrl}/`,
+    description: homeContent.introduction.description,
+    sameAs: [
+      "https://github.com/Vantalim12",
+      "https://www.linkedin.com/in/jaspergumora/",
+    ],
+  },
+};
+
 const LIMIT = 2; // max show 2
 
 export default function Home() {
   return (
     <article className="mt-8 flex flex-col gap-16 pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(profileSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
         <SwipeCards className="md:mr-8" />
 
@@ -84,7 +115,6 @@ export default function Home() {
         </div>
         <Projects limit={LIMIT} />
       </section>
-
     </article>
   );
 }
