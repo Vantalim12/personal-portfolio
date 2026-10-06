@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Legacy Rides",
-      "description": "Reliable weekly car rentals for drivers building their income across East New York and Brooklyn. Technologies: Go High Level, TypeScript, PLpgSQL, CSS, Shell, and JavaScript.",
+      "description": "Reliable weekly car rentals for drivers building their income across East New York and Brooklyn.",
       "href": "https://legacyrides.rentals/",
       "image": "/img/legacy-rides.png",
       "tags": [
