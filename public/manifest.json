@@ -8,20 +8,9 @@
   "description": "Jasper Gumora is a full-stack developer who builds web applications and self-hosts n8n workflow automations.",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
+      "src": "/favicon3.png",
+      "sizes": "1076x1462",
       "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any maskable"
     }
   ]
 }

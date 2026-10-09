@@ -13,11 +13,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Jasper Gumora", url: siteUrl }],
   creator: "Jasper Gumora",
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/apple-touch-icon.png",
+    icon: { url: "/favicon3.png", type: "image/png", sizes: "1076x1462" },
+    apple: "/favicon3.png",
   },
   manifest: "/manifest.json",
 };

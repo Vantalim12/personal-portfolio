@@ -47,7 +47,9 @@ Next check: **2026-10-16**. This is a manual tracking log; no unattended monitor
 4. Repeat the three questions above in fresh Google AI Mode and Brave Ask conversations. Also test: **What skills and project experience does Jasper Gumora have for a full-stack developer internship?** Record the engine, exact question, linked source URLs, and whether graduate status, projects, and availability are accurate. Preserve a screenshot or answer URL with each new observation.
 5. Judge progress by accurate citations, useful search queries, and clicks. Do not interpret one answer or one impression as evidence of employment leads. These manual search checks may themselves contribute impressions.
 
-Google AI Mode and AI Overview traffic is included in Search Console's Web reporting; the report does not isolate a citation count. [Google's guidance](https://developers.google.com/search/docs/appearance/ai-features)
+Google AI Mode and AI Overview traffic is included in Search Console's Web reporting. Google also now documents a separate [Generative AI performance report](https://support.google.com/webmasters/answer/16984139), which reports AI impressions by page, country, date, and device. Add its metrics to weekly checks when available; Google says it may be absent when a site has not received enough AI impressions. That report was not inspected for this baseline. Impressions are not an exact count of all citations across answer engines.
+
+Google now documents a [Search generative AI control](https://support.google.com/webmasters/answer/16908024) under Search Console Settings. Check that the property is included rather than excluded. The setting was not inspected or changed during the baseline check; actual Google AI Mode citations were observed.
 
 ## Content evidence
 
