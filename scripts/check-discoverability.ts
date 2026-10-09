@@ -67,6 +67,9 @@ async function check() {
         "https://www.linkedin.com/in/jaspergumora/",
       ]);
       assert.ok(html.includes("Hi, I&#x27;m Jasper Gumora. 👋"));
+      assert.ok(html.includes("graduated with a BS in Information Technology"));
+      assert.ok(html.includes("open to remote work"));
+      assert.ok(!html.includes("undergraduate"));
       for (const href of [
         "https://github.com/Vantalim12",
         "https://www.linkedin.com/in/jaspergumora/",
@@ -74,6 +77,18 @@ async function check() {
       ]) {
         assert.ok(html.includes(`href="${href}"`), `${href} must stay linked`);
       }
+    }
+    if (path === "/projects") {
+      for (const label of ["Problem:", "My contribution:", "Result:"]) {
+        assert.equal(
+          html.split(`<strong>${label}</strong>`).length - 1,
+          5,
+          `Each project must render its ${label} paragraph`,
+        );
+      }
+      assert.ok(html.includes("directly for a US client"));
+      assert.ok(html.includes("3,195 students"));
+      assert.ok(html.includes('href="/Gumora-Resume.pdf"'));
     }
   }
   const sitemap = await read("/sitemap.xml");

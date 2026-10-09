@@ -98,7 +98,7 @@ If asked what you can help with, list on-topic topics only.
 **Full name:** Jasper Gumora
 **Handle:** jasperswe / @Peirogi25 (X/Twitter)
 **Location:** Philippines
-**Status:** Undergraduate student actively seeking internship opportunities
+**Status:** Information Technology graduate actively seeking internship opportunities; open to remote work
 **Personality:** Pragmatic builder, dry humor, prefers working code over long meetings
 
 **One-liner:** "Full-stack dev, empty-stack meetings. I self-host n8n automations and build things that shouldn't exist."
@@ -108,7 +108,7 @@ If asked what you can help with, list on-topic topics only.
 ## Education
 
 **Mindanao State University – Iligan Institute of Technology (MSU-IIT)**
-- Currently enrolled as an undergraduate (Bachelor's degree program in computing/IT)
+- Graduated with a BS in Information Technology in July 2026
 
 **Iligan City National High School (ICNHS)**
 - Senior High School: Jun 2019 – Mar 2021
@@ -119,27 +119,27 @@ If asked what you can help with, list on-topic topics only.
 ## Projects
 
 1. **iPlan (MSU-IIT System)**
-   Contributed to the existing university iPlan system — high-fidelity dashboarding for university-level planning and resource management.
-   Tags: Data Visualization, Dashboarding
+   Built the dashboard within the existing university iPlan system during his internship with the Office of Planning and Development. Enabled offices to digitally submit and track budget and project proposals.
+   Tags: React, Vite, Chart.js, Data Visualization, Dashboarding
 
 2. **CCS Attendance Monitoring System**
-   QR-based attendance system for the School of Computer Studies, automating event monitoring and reducing manual tracking.
-   Tags: Laravel, JavaScript, QR Integration
+   Lead full-stack developer of a real-time attendance monitoring system with QR check-in and event-record management. His public resume records adoption by CED (1,995 students) and CCS (1,200 students), replacing manual tracking for a combined 3,195 students.
+   Tags: TypeScript, Node.js, QR Integration
    Source: https://github.com/Vantalim12/ccsattendancesystem
 
 3. **eSihagBa**
-   Offline-first budget transparency portal for barangays (local government units) on the Internet Computer Protocol (ICP). Features a retro-modern terminal aesthetic.
-   Tags: Motoko, ICP, Web3, Offline-First
+   Lead full-stack developer of this capstone budget transparency platform for tracking and verifying public fund allocation. His public resume records a pilot at Barangay Villa Verde, Iligan City with five daily active users. The interface is offline-first.
+   Tags: TypeScript, Motoko, ICP, Web3, Offline-First
 
 4. **Legacy Rides**
-   Reliable weekly car rentals for drivers building their income across East New York and Brooklyn.
+   Built the client-facing website directly for a US client offering weekly car rentals for drivers in East New York and Brooklyn.
    Website: https://legacyrides.rentals/
    Technologies: Go High Level, TypeScript, PLpgSQL, CSS, Shell, JavaScript
 
 5. **BetterIliganCity.org**
-   A modernized, volunteer-driven portal to access government services, public data, and resources for the people of Iligan.
+   Co-founder and full-stack developer of this volunteer-run civic tech portal centralizing government services, requirements, and procedures for Iligan residents. Built with Next.js and Tailwind CSS; development is ongoing through an open-source community contribution model.
    Website: https://betteriligancity.org/
-   Tags: Civic Tech, Government Services, Public Data
+   Tags: Next.js, Tailwind CSS, Civic Tech, Government Services, Public Data
 
 ---
 
@@ -165,7 +165,7 @@ If asked what you can help with, list on-topic topics only.
 
 ## Career Goals
 
-Jasper is an undergrad actively looking for internship opportunities. He is open to full-stack, frontend, backend, or Web3 roles. He is based in the Philippines but open to remote work.
+Jasper is an MSU-IIT Information Technology graduate actively looking for internship opportunities. He is open to full-stack, frontend, backend, or Web3 roles. He is based in the Philippines and open to remote work.
 
 ---
 
@@ -237,7 +237,7 @@ export async function POST(req: Request) {
     return Response.json(
       { error: "Chat request failed. Please try again later." },
       {
-      status: 500,
+        status: 500,
       },
     );
   }

@@ -9,6 +9,11 @@
       "suffix": "instead."
     }
   },
+  "about": {
+    "background": "I'm based in the Philippines and graduated with a BS in Information Technology from Mindanao State University – Iligan Institute of Technology (MSU-IIT) in July 2026.",
+    "availability": "I'm actively seeking internships in full-stack, frontend, backend, or Web3 development and am open to remote work.",
+    "skills": "My skills include TypeScript, JavaScript, PHP, Motoko, React, Next.js, React Native, Tailwind CSS, Framer Motion, Laravel, Node.js, MongoDB, Solana, Internet Computer Protocol (ICP), and self-hosted n8n automation. I also work with Git, Vercel, and Resend."
+  },
   "escalationLink": {
     "href": "https://www.instagram.com/woofwoof.jopay",
     "title": "woof"

@@ -101,6 +101,15 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="flex flex-col gap-8">
+        <h2 className="title text-2xl sm:text-3xl">about me.</h2>
+        <div className="flex flex-col gap-4 text-sm sm:text-base">
+          <p>{homeContent.about.background}</p>
+          <p>{homeContent.about.availability}</p>
+          <p>{homeContent.about.skills}</p>
+        </div>
+      </section>
+
       <Experience />
 
       <section className="flex flex-col gap-8">

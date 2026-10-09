@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Legacy Rides",
-      "description": "Reliable weekly car rentals for drivers building their income across East New York and Brooklyn.",
+      "description": "**Problem:** Drivers in East New York and Brooklyn need clear information about weekly car rentals for income-generating work.\n\n**My contribution:** I built the Legacy Rides website directly for a US client, presenting the rental service online. The project uses Go High Level alongside custom web development.\n\n**Result:** The client-facing website is available at [legacyrides.rentals](https://legacyrides.rentals/).",
       "href": "https://legacyrides.rentals/",
       "image": "/img/legacy-rides.png",
       "tags": [
@@ -17,15 +17,10 @@
     },
     {
       "name": "eSihagBa",
-      "description": "An offline-first budget transparency portal for barangays on the Internet Computer Protocol, featuring a retro-modern, minimalist terminal aesthetic.",
+      "description": "**Problem:** Barangay stakeholders need a way to track and verify how public funds are allocated.\n\n**My contribution:** As lead full-stack developer for this capstone project, I built a budget transparency platform using TypeScript and Motoko on the Internet Computer Protocol (ICP), with an offline-first interface.\n\n**Result:** The platform was piloted at Barangay Villa Verde, Iligan City. My [résumé](/Gumora-Resume.pdf) records five daily active users during the pilot; the [source code](https://github.com/Vantalim12/eSihagBaICBlockchain) is available on GitHub.",
       "href": "https://rxfvq-ryaaa-aaaab-afiea-cai.icp0.io/#/",
       "image": "/img/esihagba.png",
-      "tags": [
-        "Motoko",
-        "ICP",
-        "Web3",
-        "Offline-First"
-      ],
+      "tags": ["TypeScript", "Motoko", "ICP", "Web3", "Offline-First"],
       "links": [
         {
           "name": "Source",
@@ -36,9 +31,12 @@
     },
     {
       "name": "iPlan (MSU-IIT System)",
-      "description": "Contributed to the development of the existing iPlan system, focusing on high-fidelity dashboarding for university-level planning and resource management.",
+      "description": "**Problem:** MSU-IIT offices need to submit and track budget and project proposals for university planning.\n\n**My contribution:** During my internship with the Office of Planning and Development, I built the dashboard within the existing iPlan system using React, Vite, and Chart.js, focusing on proposal tracking and data visualization.\n\n**Result:** The dashboard enabled offices to digitally submit and track their proposals. This internship contribution is documented in my [résumé](/Gumora-Resume.pdf).",
       "image": "/img/iplandb.png",
       "tags": [
+        "React",
+        "Vite",
+        "Chart.js",
         "Data Visualization",
         "Dashboarding"
       ],
@@ -46,13 +44,9 @@
     },
     {
       "name": "CCS Attendance Monitoring System",
-      "description": "A QR-based attendance system developed to automate event monitoring for the School of Computer Studies, reducing manual tracking effort.",
+      "description": "**Problem:** College events relied on manual attendance tracking across large student groups.\n\n**My contribution:** As lead full-stack developer, I built and deployed a real-time attendance monitoring system using TypeScript and Node.js, with QR check-in and data management for event records.\n\n**Result:** My [résumé](/Gumora-Resume.pdf) records adoption by CED (1,995 students) and CCS (1,200 students), replacing manual tracking for a combined 3,195 students. The [source code](https://github.com/Vantalim12/ccsattendancesystem) is available on GitHub.",
       "image": "/img/ccsams.png",
-      "tags": [
-        "Laravel",
-        "JavaScript",
-        "QR Integration"
-      ],
+      "tags": ["TypeScript", "Node.js", "QR Integration"],
       "links": [
         {
           "name": "Source",
@@ -63,10 +57,12 @@
     },
     {
       "name": "BetterIliganCity.org",
-      "description": "A modernized, volunteer-driven portal to access government services, public data, and resources for the people of Iligan.",
+      "description": "**Problem:** Iligan residents need a central place to find government services, requirements, and procedures.\n\n**My contribution:** I co-founded this volunteer-run civic tech project and work as a full-stack developer, building the portal with Next.js and Tailwind CSS through an open-source community contribution model.\n\n**Result:** The portal is available at [betteriligancity.org](https://betteriligancity.org/), with [public source code](https://github.com/KishonShrill/BetterIligan) for community collaboration. Development is ongoing; my role is documented in my [résumé](/Gumora-Resume.pdf).",
       "href": "https://betteriligancity.org/",
       "image": "/img/betteriligan-city.png",
       "tags": [
+        "Next.js",
+        "Tailwind CSS",
         "Civic Tech",
         "Government Services",
         "Public Data"
