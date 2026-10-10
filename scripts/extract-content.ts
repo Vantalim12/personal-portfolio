@@ -34,7 +34,7 @@ function extractHomepageContent(): ContentChunk[] {
         contentType: "page",
         enrichment: [
           "This is my portfolio homepage with introduction and welcome message",
-          "I'm a backend developer with full-stack experience",
+          "I'm an MSU-IIT graduate and full-stack developer and GoHighLevel (GHL) integrator at BKMElevations LLC",
           "You can chat with Jas Support for questions and answers",
           "For escalations, contact Jas Lead on Instagram (a joke — it's Jasper's cat)",
           "This site showcases my projects, career, and education",
@@ -211,12 +211,12 @@ function extractCareerData(): ContentChunk[] {
         metadata: {
           contentType: "career",
           enrichment: [
-            `I worked at ${job.name} as a ${roleTitle}`,
-            `My role at ${job.name} was ${roleTitle}`,
+            `My employment history includes ${roleTitle} at ${job.name}`,
+            `My role at ${job.name}: ${roleTitle}`,
             period
-              ? `I was employed at ${job.name} from ${start}${end ? ` to ${end}` : " to present"}`
-              : `I was employed at ${job.name}`,
-            `During my time at ${job.name}, I worked as a ${roleTitle}`,
+              ? `My employment at ${job.name} spans ${start}${end ? ` to ${end}` : " to present"}`
+              : `My employment history includes ${job.name}`,
+            `Position at ${job.name}: ${roleTitle}`,
             `My employment history includes working at ${job.name}`,
             `I gained experience at ${job.name} in the ${job.name.includes("Bank") ? "finance" : job.name.includes("Institute") ? "education" : "technology"} industry`,
             `This was a ${roleTitle.includes("Intern") ? "internship position" : roleTitle.includes("Graduate") ? "entry-level graduate role" : "professional position"}`,

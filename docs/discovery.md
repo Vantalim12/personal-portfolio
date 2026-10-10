@@ -44,7 +44,7 @@ Next check: **2026-10-16**. This is a manual tracking log; no unattended monitor
 1. After deployment, inspect `/` and `/projects` again. Confirm crawl dates advance, both remain indexed, and Google keeps their self-canonicals. Request indexing once after confirming the updated public text is live.
 2. Open the same 28-day Web performance report and append a dated row above. Record the displayed data range and last-update time. Use date comparison for the previous 28 days once enough history exists.
 3. Check Pages and Queries separately. Record impressions and clicks for both pages, name queries containing `Jasper Gumora`, and any reported queries about skills, projects, internships, or remote work. Keep missing or unreported rows marked as unavailable.
-4. Repeat the three questions above in fresh Google AI Mode and Brave Ask conversations. Also test: **What skills and project experience does Jasper Gumora have for a full-stack developer internship?** Record the engine, exact question, linked source URLs, and whether graduate status, projects, and availability are accurate. Preserve a screenshot or answer URL with each new observation.
+4. Repeat the name and projects questions above in fresh Google AI Mode and Brave Ask conversations. Also test: **Where does Jasper Gumora currently work, and what does he do at BKMElevations LLC?** Record the engine, exact question, linked source URLs, and whether graduate status, current employment, and projects are accurate. Preserve a screenshot or answer URL with each new observation.
 5. Judge progress by accurate citations, useful search queries, and clicks. Do not interpret one answer or one impression as evidence of employment leads. These manual search checks may themselves contribute impressions.
 
 Google AI Mode and AI Overview traffic is included in Search Console's Web reporting. Google also now documents a separate [Generative AI performance report](https://support.google.com/webmasters/answer/16984139), which reports AI impressions by page, country, date, and device. Add its metrics to weekly checks when available; Google says it may be absent when a site has not received enough AI impressions. That report was not inspected for this baseline. Impressions are not an exact count of all citations across answer engines.
@@ -53,7 +53,8 @@ Google now documents a [Search generative AI control](https://support.google.com
 
 ## Content evidence
 
-- Legacy Rides: the user confirmed direct work for a US client. The description links the client site and makes no conversion or revenue claim.
+- Current employment (confirmed by the user on 2026-10-10): Jasper joined BKMElevations LLC, a startup based in New York, United States, in September 2026 as a full-stack developer and GoHighLevel (GHL) integrator. The supplied official website is https://bkmelevations.com/; it could not be fetched by the web research tool.
+- Legacy Rides: the user clarified that this is client work through BKMElevations LLC and confirmed https://legacyrides.rentals/ as the correct website. The description links the client site and makes no conversion or revenue claim.
 - eSihagBa, iPlan, CCS Attendance, and BetterIligan: roles and outcomes were drawn from the existing [public résumé](../public/Gumora-Resume.pdf). Adoption and pilot counts are explicitly attributed to that résumé; they were not independently audited.
 - CCS Attendance: the user confirmed TypeScript and Node.js as the version to showcase.
 - Graduate status: the user confirmed graduation; the résumé gives July 2026.
@@ -61,4 +62,4 @@ Google now documents a [Search generative AI control](https://support.google.com
 
 The existing eSihagBa and CCS GitHub links could not be fetched by the web research tool. They remain the supplied source links, rather than independently verified implementation evidence.
 
-Google's observed LinkedIn and Himalayas snippets still describe Jasper as a student. Those external profiles were not edited in this task; align their education and availability text separately to reduce conflicting sources.
+Google's observed LinkedIn and Himalayas snippets still describe Jasper as a student. The user supplied another Google AI Mode screenshot on 2026-10-10 that still describes him as a current MSU-IIT student. Those external profiles were not edited in this task; align their education and employment text separately to reduce conflicting sources. After deployment, request homepage indexing in Search Console and repeat the name and current-employment questions; no refreshed Google answer has been verified yet.

@@ -1,7 +1,7 @@
 {
   "introduction": {
     "greeting": "Hi, I'm Jasper Gumora. 👋",
-    "description": "Full-stack developer building web applications and self-hosting n8n workflow automations.",
+    "description": "Full-stack developer and GoHighLevel (GHL) integrator at BKMElevations LLC, a startup based in New York, United States.",
     "chatPrompt": "For Q&A, start a chat with Jas Support",
     "escalation": {
       "text": "For any escalations, please find my",
@@ -11,8 +11,8 @@
   },
   "about": {
     "background": "I'm based in the Philippines and graduated with a BS in Information Technology from Mindanao State University – Iligan Institute of Technology (MSU-IIT) in July 2026.",
-    "availability": "I'm actively seeking internships in full-stack, frontend, backend, or Web3 development and am open to remote work.",
-    "skills": "My skills include TypeScript, JavaScript, PHP, Motoko, React, Next.js, React Native, Tailwind CSS, Framer Motion, Laravel, Node.js, MongoDB, Solana, Internet Computer Protocol (ICP), and self-hosted n8n automation. I also work with Git, Vercel, and Resend."
+    "availability": "I'm currently working at BKMElevations LLC, a startup based in New York, United States, as a full-stack developer and GoHighLevel (GHL) integrator. I joined in September 2026 and work on its client project, Legacy Rides.",
+    "skills": "My skills include TypeScript, JavaScript, PHP, Motoko, React, Next.js, React Native, Tailwind CSS, Framer Motion, Laravel, Node.js, MongoDB, Solana, Internet Computer Protocol (ICP), GoHighLevel (GHL) integration, and self-hosted n8n automation. I also work with Git, Vercel, and Resend."
   },
   "escalationLink": {
     "href": "https://www.instagram.com/woofwoof.jopay",

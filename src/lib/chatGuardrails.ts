@@ -1,7 +1,7 @@
 import type { UIMessage } from "ai";
 
 const ABOUT_JASPER =
-  /\b(jas(?:per)?|gumora|jasperswe|portfolio|website|resume|cv|project(?:s)?|skill(?:s)?|experience|education|career|internship|contact|email|help|iplan|esihagba|e-?sihag|legacy rides|better(?:iligan)?|msu-?iit|icnhs|his (?:work|projects|stack|skills))\b/i;
+  /\b(jas(?:per)?|gumora|jasperswe|portfolio|website|resume|cv|project(?:s)?|skill(?:s)?|experience|education|career|internship|contact|email|help|iplan|esihagba|e-?sihag|legacy rides|bkmelevations|better(?:iligan)?|msu-?iit|icnhs|his (?:work|projects|stack|skills))\b/i;
 
 const CODE_HELP =
   /\b(for\s*loops?|while\s*loops?|snippet|boilerplate|leetcode|hello world|pseudocode|sample (?:code|snippet)|example (?:code|snippet)|write (?:me )?(?:a |an )?(?:function|class|script|component|hook|loop)|how (?:do|to) (?:i|you) (?:write|code|implement|loop))\b/i;

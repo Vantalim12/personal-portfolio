@@ -98,7 +98,7 @@ If asked what you can help with, list on-topic topics only.
 **Full name:** Jasper Gumora
 **Handle:** jasperswe / @Peirogi25 (X/Twitter)
 **Location:** Philippines
-**Status:** Information Technology graduate actively seeking internship opportunities; open to remote work
+**Status:** MSU-IIT Information Technology graduate; full-stack developer and GoHighLevel (GHL) integrator at BKMElevations LLC since September 2026
 **Personality:** Pragmatic builder, dry humor, prefers working code over long meetings
 
 **One-liner:** "Full-stack dev, empty-stack meetings. I self-host n8n automations and build things that shouldn't exist."
@@ -132,9 +132,9 @@ If asked what you can help with, list on-topic topics only.
    Tags: TypeScript, Motoko, ICP, Web3, Offline-First
 
 4. **Legacy Rides**
-   Built the client-facing website directly for a US client offering weekly car rentals for drivers in East New York and Brooklyn.
+   Works on the client-facing website for Legacy Rides, one of BKMElevations LLC's clients, as a full-stack developer and GoHighLevel (GHL) integrator. The client offers weekly car rentals for drivers in East New York and Brooklyn.
    Website: https://legacyrides.rentals/
-   Technologies: Go High Level, TypeScript, PLpgSQL, CSS, Shell, JavaScript
+   Technologies: GoHighLevel (GHL), TypeScript, PLpgSQL, CSS, Shell, JavaScript
 
 5. **BetterIliganCity.org**
    Co-founder and full-stack developer of this volunteer-run civic tech portal centralizing government services, requirements, and procedures for Iligan residents. Built with Next.js and Tailwind CSS; development is ongoing through an open-source community contribution model.
@@ -150,7 +150,7 @@ If asked what you can help with, list on-topic topics only.
 - **Backend:** Laravel, Node.js
 - **Blockchain/Web3:** Solana, Internet Computer Protocol (ICP)
 - **Databases:** MongoDB
-- **Automation:** n8n (self-hosted)
+- **Automation:** GoHighLevel (GHL) integration, n8n (self-hosted)
 - **Tools:** Git, Vercel, Resend
 
 ---
@@ -163,9 +163,9 @@ If asked what you can help with, list on-topic topics only.
 
 ---
 
-## Career Goals
+## Current Role
 
-Jasper is an MSU-IIT Information Technology graduate actively looking for internship opportunities. He is open to full-stack, frontend, backend, or Web3 roles. He is based in the Philippines and open to remote work.
+Jasper graduated from MSU-IIT with a BS in Information Technology in July 2026. He joined BKMElevations LLC in September 2026 as a full-stack developer and GoHighLevel (GHL) integrator. BKMElevations LLC is a startup based in New York, United States, with its official website at https://bkmelevations.com/. Jasper works on Legacy Rides, one of its clients, at https://legacyrides.rentals/. He is based in the Philippines; New York is his employer's location.
 
 ---
 

@@ -29,9 +29,24 @@ const profileSchema = {
     "@type": "Person",
     "@id": `${siteUrl}/#jasper-gumora`,
     name: "Jasper Gumora",
-    jobTitle: "Full-Stack Developer",
+    jobTitle: "Full-Stack Developer & GoHighLevel (GHL) Integrator",
     url: `${siteUrl}/`,
     description: homeContent.introduction.description,
+    worksFor: {
+      "@type": "Organization",
+      name: "BKMElevations LLC",
+      url: "https://bkmelevations.com/",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "New York",
+        addressCountry: "US",
+      },
+    },
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Mindanao State University – Iligan Institute of Technology (MSU-IIT)",
+      url: "https://www.msuiit.edu.ph",
+    },
     sameAs: [
       "https://github.com/Vantalim12",
       "https://www.linkedin.com/in/jaspergumora/",

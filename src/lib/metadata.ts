@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const siteUrl = "https://jaspergumora.is-pinoy.dev";
 export const siteDescription =
-  "Jasper Gumora is a full-stack developer who builds web applications and self-hosts n8n workflow automations.";
+  "Jasper Gumora is an MSU-IIT graduate and full-stack developer and GoHighLevel (GHL) integrator at BKMElevations LLC, a New York, United States startup.";
 
 export function getPageMetadata(
   title: string,

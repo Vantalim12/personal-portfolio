@@ -2,11 +2,11 @@
   "projects": [
     {
       "name": "Legacy Rides",
-      "description": "**Problem:** Drivers in East New York and Brooklyn need clear information about weekly car rentals for income-generating work.\n\n**My contribution:** I built the Legacy Rides website directly for a US client, presenting the rental service online. The project uses Go High Level alongside custom web development.\n\n**Result:** The client-facing website is available at [legacyrides.rentals](https://legacyrides.rentals/).",
+      "description": "**Problem:** Drivers in East New York and Brooklyn need clear information about weekly car rentals for income-generating work.\n\n**My contribution:** I work on the Legacy Rides website as a full-stack developer and GoHighLevel (GHL) integrator at BKMElevations LLC. Legacy Rides is one of the New York startup's clients. The project uses GoHighLevel alongside custom web development to present the rental service online.\n\n**Result:** The client-facing website is available at [legacyrides.rentals](https://legacyrides.rentals/).",
       "href": "https://legacyrides.rentals/",
       "image": "/img/legacy-rides.png",
       "tags": [
-        "Go High Level",
+        "GoHighLevel (GHL)",
         "TypeScript",
         "PLpgSQL",
         "CSS",

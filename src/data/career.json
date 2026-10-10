@@ -1,16 +1,23 @@
 {
   "career": [
     {
-      "name": "Open to Internships",
-      "href": "",
-      "logo": "/img/placeholder-company.png",
+      "name": "BKMElevations LLC",
+      "href": "https://bkmelevations.com/",
+      "logo": "",
       "positions": [
         {
-          "title": "Internship / Part-time Role",
-          "start": "2025",
+          "title": "Full-Stack Developer & GoHighLevel (GHL) Integrator",
+          "start": "Sep 2026",
           "description": [
-            "MSU-IIT Information Technology graduate actively looking for internship opportunities in full-stack development, Web3, or DevOps/automation. Open to remote work.",
-            "Reach out via the contact form or email if you'd like to work together!"
+            "Working at a startup based in New York, United States, since September 2026.",
+            "Full-stack development and GoHighLevel (GHL) integration for Legacy Rides, one of BKMElevations LLC's clients."
+          ],
+          "links": [
+            {
+              "name": "Legacy Rides",
+              "href": "https://legacyrides.rentals/",
+              "icon": "external-link"
+            }
           ]
         }
       ]

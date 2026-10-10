@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { isOffTopicQuestion } from "../src/lib/chatGuardrails";
 
 const baseUrl = process.argv[2] ?? "http://localhost:3000";
 const publicUrl = "https://jaspergumora.is-pinoy.dev";
@@ -19,6 +20,12 @@ async function read(path: string) {
 }
 
 async function check() {
+  assert.equal(isOffTopicQuestion("What is BKMElevations LLC?"), false);
+  assert.equal(
+    isOffTopicQuestion("Write a function for BKMElevations LLC"),
+    true,
+  );
+  assert.equal(isOffTopicQuestion("What is the weather in New York?"), true);
   for (const [path, title] of pages) {
     const html = await read(path);
     const head = html.match(/<head>([\s\S]*?)<\/head>/)?.[1];
@@ -60,7 +67,22 @@ async function check() {
       assert.equal(profile["@type"], "ProfilePage");
       assert.equal(profile.mainEntity["@type"], "Person");
       assert.equal(profile.mainEntity.name, "Jasper Gumora");
-      assert.equal(profile.mainEntity.jobTitle, "Full-Stack Developer");
+      assert.equal(
+        profile.mainEntity.jobTitle,
+        "Full-Stack Developer & GoHighLevel (GHL) Integrator",
+      );
+      assert.equal(profile.mainEntity.worksFor.name, "BKMElevations LLC");
+      assert.equal(
+        profile.mainEntity.worksFor.url,
+        "https://bkmelevations.com/",
+      );
+      assert.equal(
+        profile.mainEntity.worksFor.address.addressRegion,
+        "New York",
+      );
+      assert.equal(profile.mainEntity.worksFor.address.addressCountry, "US");
+      assert.equal(profile.mainEntity.alumniOf["@type"], "CollegeOrUniversity");
+      assert.ok(profile.mainEntity.alumniOf.name.includes("MSU-IIT"));
       assert.equal(profile.mainEntity["@id"], `${publicUrl}/#jasper-gumora`);
       assert.deepEqual(profile.mainEntity.sameAs, [
         "https://github.com/Vantalim12",
@@ -68,12 +90,21 @@ async function check() {
       ]);
       assert.ok(html.includes("Hi, I&#x27;m Jasper Gumora. 👋"));
       assert.ok(html.includes("graduated with a BS in Information Technology"));
-      assert.ok(html.includes("open to remote work"));
+      assert.ok(html.includes("BKMElevations LLC"));
+      assert.ok(html.includes("GoHighLevel (GHL) integrator"));
+      assert.ok(html.includes("September 2026"));
+      assert.ok(html.includes("Sep 2026"));
+      assert.ok(meta.description.includes("MSU-IIT graduate"));
+      assert.ok(meta.description.includes("BKMElevations LLC"));
+      assert.ok(!html.includes("seeking internships"));
+      assert.ok(!html.includes("Open to Internships"));
       assert.ok(!html.includes("undergraduate"));
       for (const href of [
         "https://github.com/Vantalim12",
         "https://www.linkedin.com/in/jaspergumora/",
         "/Gumora-Resume.pdf",
+        "https://bkmelevations.com/",
+        "https://legacyrides.rentals/",
       ]) {
         assert.ok(html.includes(`href="${href}"`), `${href} must stay linked`);
       }
@@ -86,7 +117,9 @@ async function check() {
           `Each project must render its ${label} paragraph`,
         );
       }
-      assert.ok(html.includes("directly for a US client"));
+      assert.ok(html.includes("BKMElevations LLC"));
+      assert.ok(html.includes("GoHighLevel (GHL) integrator"));
+      assert.ok(html.includes('href="https://legacyrides.rentals/"'));
       assert.ok(html.includes("3,195 students"));
       assert.ok(html.includes('href="/Gumora-Resume.pdf"'));
     }
